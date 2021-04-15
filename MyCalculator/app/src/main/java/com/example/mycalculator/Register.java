@@ -13,6 +13,8 @@ public class Register extends AppCompatActivity {
     EditText passwordField;
     EditText confirmPasswordField;
 
+    DialogMessage dialogMessage = new DialogMessage();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -37,11 +39,13 @@ public class Register extends AppCompatActivity {
                 startActivity(intent);
             }
             else {
-                System.out.println("Passwords don't match.");
+                dialogMessage.title = "Passwords don't match.";
+                dialogMessage.show(getSupportFragmentManager(), "custom");
             }
         }
         else {
-            System.out.println("Invalid password or email address.");
+            dialogMessage.title="Invalid password or email address.";
+            dialogMessage.show(getSupportFragmentManager(),"u");
         }
     }
 }

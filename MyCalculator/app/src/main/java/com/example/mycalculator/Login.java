@@ -17,6 +17,8 @@ public class Login extends AppCompatActivity {
     private final String myEmail = "qwe";
     private final String myPassword = "123";
 
+    DialogMessage dialogMessage = new DialogMessage();
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -25,11 +27,6 @@ public class Login extends AppCompatActivity {
         emailAddressField = (EditText) findViewById(R.id.email);
         passwordField = (EditText) findViewById(R.id.password);
         users.put(myEmail, myPassword);
-    }
-
-    @Override
-    protected void onStop() {
-        super.onStop();
     }
 
     @Override
@@ -59,12 +56,14 @@ public class Login extends AppCompatActivity {
             }
             else
             {
-                System.out.println("Invalid password.");
+                dialogMessage.title="Invalid password.";
+                dialogMessage.show(getSupportFragmentManager(), "t");
             }
         }
         else
         {
-            System.out.println("The email you provided has not been registered.");
+            dialogMessage.title="The email you provided has not been registered.";
+            dialogMessage.show(getSupportFragmentManager(), "r");
         }
     }
 
