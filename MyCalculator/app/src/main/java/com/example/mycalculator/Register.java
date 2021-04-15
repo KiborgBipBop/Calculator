@@ -24,17 +24,24 @@ public class Register extends AppCompatActivity {
     }
 
     public void validateRegistration(View view) {
+        String patternPass = "(?=.*[0-9])(?=.*[a-z])(?=.*[A-Z])(?=.*[@#$%^&+=_])(?=\\S+$).{8,}";
+        String patternMail = "\\w+([\\.-]?\\w+)*@\\w+([\\.-]?\\w+)*\\.\\w{2,4}";
         Intent intent = new Intent(Register.this,Login.class);
         String mail= String.valueOf(emailAddressField.getText());
         String pass= String.valueOf(passwordField.getText());
         String secPass= String.valueOf(confirmPasswordField.getText());
-        if(pass.equals(secPass)) {
-            intent.putExtra("email", mail);
-            intent.putExtra("pass", pass);
-            startActivity(intent);
+        if (mail.matches(patternMail) && pass.matches(patternPass)) {
+            if(pass.equals(secPass)) {
+                intent.putExtra("email", mail);
+                intent.putExtra("pass", pass);
+                startActivity(intent);
+            }
+            else {
+                System.out.println("Passwords don't match.");
+            }
         }
         else {
-            System.out.println("Passwords don't match.");
+            System.out.println("Invalid password or email address.");
         }
     }
 }
