@@ -131,7 +131,8 @@ public class Calculator extends AppCompatActivity {
         }
         commaExists = false;
         operand = operand.round(new MathContext(10, RoundingMode.HALF_UP));
-        operand = operand.stripTrailingZeros();
+        if (operand.stripTrailingZeros().scale() > 0)
+            operand = operand.stripTrailingZeros();
         resultField.setText(operand.toString().replace('.', ','));
         numberField.setText("");
     }
