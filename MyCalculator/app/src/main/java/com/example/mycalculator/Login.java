@@ -35,6 +35,15 @@ public class Login extends AppCompatActivity {
     @Override
     protected void onResume() {
         super.onResume();
+        String registeredMail= null;
+        String registeredPass = null;
+        Bundle arguments = getIntent().getExtras();
+        if (arguments != null)
+        {
+            registeredMail = arguments.get("email").toString();
+            registeredPass = arguments.get("pass").toString();
+        }
+        users.put(registeredMail, registeredPass);
     }
 
     public void signIn(View view) {
@@ -56,6 +65,19 @@ public class Login extends AppCompatActivity {
         else
         {
             System.out.println("The email you provided has not been registered.");
+        }
+    }
+
+    public void register(View view)
+    {
+        Intent intent = new Intent(Login.this, Register.class);
+        try
+        {
+            startActivity(intent);
+        }
+        catch (Exception e)
+        {
+            e.printStackTrace();
         }
     }
 }
