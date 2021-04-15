@@ -10,6 +10,7 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
+import java.math.MathContext;
 import java.math.RoundingMode;
 
 public class Calculator extends AppCompatActivity {
@@ -129,6 +130,8 @@ public class Calculator extends AppCompatActivity {
             }
         }
         commaExists = false;
+        operand = operand.round(new MathContext(10, RoundingMode.HALF_UP));
+        operand = operand.stripTrailingZeros();
         resultField.setText(operand.toString().replace('.', ','));
         numberField.setText("");
     }
