@@ -15,6 +15,7 @@
         android:weightSum="4">
 
         <TextView
+            android:id="@+id/resultField"
             android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeMaxTextSize="30sp"
@@ -33,6 +34,7 @@
             android:textStyle="bold" />
 
         <TextView
+            android:id="@+id/operationField"
             android:autoSizeTextType="uniform"
             android:autoSizeMinTextSize="12sp"
             android:autoSizeMaxTextSize="30sp"
@@ -52,6 +54,7 @@
     </LinearLayout>
 
     <EditText
+        android:id="@+id/numberField"
         android:autoSizeTextType="uniform"
         android:autoSizeMinTextSize="12sp"
         android:autoSizeMaxTextSize="30sp"
@@ -73,6 +76,7 @@
         android:layout_weight="1"
         android:weightSum="4">
         <Button
+            android:id="@+id/sin"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -80,9 +84,11 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textColor="#4CAF50"
-            android:textSize="18sp"/>
+            android:textSize="18sp"
+            android:onClick="onOperationClick"/>
 
         <Button
+            android:id="@+id/cos"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -90,9 +96,11 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textColor="#4CAF50"
-            android:textSize="18dp"/>
+            android:textSize="18dp"
+            android:onClick="onOperationClick"/>
 
         <Button
+            android:id="@+id/div"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -100,14 +108,17 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4CAF50"/>
+            android:textColor="#4CAF50"
+            android:onClick="onOperationClick"/>
 
         <ImageView
+            android:id="@+id/back"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:layout_marginHorizontal="5dp"
-            android:src="@drawable/back"/>
+            android:src="@drawable/back"
+            android:onClick="onOperationClick"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -115,6 +126,7 @@
         android:layout_weight="1"
         android:weightSum="4">
         <Button
+            android:id="@+id/seven"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -122,16 +134,20 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4A4A4A"/>
+            android:textColor="#4A4A4A"
+            android:onClick="onNumberClick"/>
         <Button
+            android:id="@+id/eight"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
             android:text="8" android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4A4A4A"/>
+            android:textColor="#4A4A4A"
+            android:onClick="onNumberClick"/>
         <Button
+            android:id="@+id/nine"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -139,9 +155,11 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4A4A4A"/>
+            android:textColor="#4A4A4A"
+            android:onClick="onNumberClick"/>
 
         <Button
+            android:id="@+id/mul"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -149,7 +167,8 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4CAF50"/>
+            android:textColor="#4CAF50"
+            android:onClick="onOperationClick"/>
 
     </LinearLayout>
     <LinearLayout
@@ -158,6 +177,7 @@
         android:layout_weight="1"
         android:weightSum="4">
         <Button
+            android:id="@+id/four"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -165,8 +185,10 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4A4A4A"/>
+            android:textColor="#4A4A4A"
+            android:onClick="onNumberClick"/>
         <Button
+            android:id="@+id/five"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -174,8 +196,10 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4A4A4A"/>
+            android:textColor="#4A4A4A"
+            android:onClick="onNumberClick"/>
         <Button
+            android:id="@+id/six"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -183,9 +207,11 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4A4A4A"/>
+            android:textColor="#4A4A4A"
+            android:onClick="onNumberClick"/>
 
         <Button
+            android:id="@+id/min"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -193,7 +219,8 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4CAF50"/>
+            android:textColor="#4CAF50"
+            android:onClick="onOperationClick"/>
 
     </LinearLayout>
     <LinearLayout
@@ -202,6 +229,7 @@
         android:layout_weight="1"
         android:weightSum="4">
         <Button
+            android:id="@+id/one"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -209,8 +237,10 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4A4A4A"/>
+            android:textColor="#4A4A4A"
+            android:onClick="onNumberClick"/>
         <Button
+            android:id="@+id/two"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -218,9 +248,11 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4A4A4A"/>
+            android:textColor="#4A4A4A"
+            android:onClick="onNumberClick"/>
 
         <Button
+            android:id="@+id/three"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_marginHorizontal="5dp"
@@ -228,9 +260,11 @@
             android:backgroundTint="#F3F3F3"
             android:text="3"
             android:textColor="#4A4A4A"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+            android:onClick="onNumberClick"/>
 
         <Button
+            android:id="@+id/plus"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -238,7 +272,8 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4CAF50"/>
+            android:textColor="#4CAF50"
+            android:onClick="onOperationClick"/>
     </LinearLayout>
     <LinearLayout
         android:layout_width="fill_parent"
@@ -246,6 +281,7 @@
         android:layout_weight="1"
         android:weightSum="4">
         <Button
+            android:id="@+id/zero"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -253,8 +289,10 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4A4A4A"/>
+            android:textColor="#4A4A4A"
+            android:onClick="onNumberClick"/>
         <Button
+            android:id="@+id/comma"
             android:layout_height="fill_parent"
             android:layout_width="0dp"
             android:layout_weight="1"
@@ -262,9 +300,11 @@
             android:layout_marginHorizontal="5dp"
             android:backgroundTint="#F3F3F3"
             android:textSize="30sp"
-            android:textColor="#4A4A4A"/>
+            android:textColor="#4A4A4A"
+            android:onClick="onNumberClick"/>
 
         <Button
+            android:id="@+id/equal"
             android:layout_width="0dp"
             android:layout_height="fill_parent"
             android:layout_marginHorizontal="5dp"
@@ -272,6 +312,7 @@
             android:backgroundTint="#4CAF50"
             android:text="="
             android:textColor="#FFFFFF"
-            android:textSize="30sp"/>
+            android:textSize="30sp"
+            android:onClick="onOperationClick"/>
     </LinearLayout>
 </LinearLayout>
