@@ -91,6 +91,12 @@ public class Calculator extends AppCompatActivity {
     }
 
     private void performOperation(Double number, String operation){
+        if (operation.equals("sin")){
+            operand = Math.sin(number);
+        }
+        else if (operation.equals("cos")){
+            operand = Math.cos(number);
+        }
         if(lastOperation.equals("=")){
             lastOperation = operation;
         }
