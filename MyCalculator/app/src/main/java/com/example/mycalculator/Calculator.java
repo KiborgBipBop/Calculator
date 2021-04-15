@@ -50,13 +50,12 @@ public class Calculator extends AppCompatActivity {
 
     public void onNumberClick(View view) {
         Button button = (Button)view;
-        if(button.getText().toString().equals(",") && commaExists)
-        {
-            return;
-        }
         if(button.getText().toString().equals(","))
         {
-            commaExists = true;
+            if (commaExists)
+                return;
+            else
+                commaExists = true;
         }
         numberField.append(button.getText());
         if(lastOperation.equals("=") && operand!=null){
@@ -131,9 +130,8 @@ public class Calculator extends AppCompatActivity {
         }
         commaExists = false;
         operand = operand.round(new MathContext(10, RoundingMode.HALF_UP));
-        if (operand.stripTrailingZeros().scale() > 0)
-            operand = operand.stripTrailingZeros();
-        resultField.setText(operand.toString().replace('.', ','));
+        operand = operand.stripTrailingZeros();
+        resultField.setText(operand.toPlainString().replace('.', ','));
         numberField.setText("");
     }
 }
