@@ -10,13 +10,14 @@ import android.widget.ImageView;
 import android.widget.TextView;
 
 import java.math.BigDecimal;
+import java.math.RoundingMode;
 
 public class Calculator extends AppCompatActivity {
 
     TextView resultField;
     EditText numberField;
     TextView operationField;
-    Double operand = null;
+    BigDecimal operand = BigDecimal.ZERO;
     String lastOperation = "=";
     boolean commaExists = false;
 
@@ -41,7 +42,7 @@ public class Calculator extends AppCompatActivity {
     protected void onRestoreInstanceState(Bundle savedInstanceState) {
         super.onRestoreInstanceState(savedInstanceState);
         lastOperation = savedInstanceState.getString("OPERATION");
-        operand= savedInstanceState.getDouble("OPERAND");
+        operand= BigDecimal.valueOf(savedInstanceState.getDouble("OPERAND"));
         resultField.setText(operand.toString());
         operationField.setText(lastOperation);
     }
@@ -63,63 +64,69 @@ public class Calculator extends AppCompatActivity {
     }
 
     public void onOperationClick(View view) {
-        if(view instanceof Button) {
-            Button button = (Button)view;
-            String op = button.getText().toString();
-            String number = numberField.getText().toString();
-            if(number.length()>0) {
-                number = number.replace(',', '.');
-                try{
-                    performOperation(Double.valueOf(number), op);
-                }catch (NumberFormatException ex){
-                    numberField.setText("");
-                }
-            }
-            else if(op.equals("-") && numberField.length() == 0) {
-                numberField.setText("-");
-            }
-            lastOperation = op;
-        }
-        else if(view instanceof ImageView) {
-            if(view.getId() == R.id.back) {
+        if(view instanceof ImageView)
+        {
+            if(view.getId() == R.id.back)
+            {
                 operand = null;
                 resultField.setText("");
                 numberField.setText("");
+                operationField.setText("");
             }
-
+        }
+        else {
+            Button button = (Button) view;
+            String op = button.getText().toString();
+            String number = numberField.getText().toString();
+            if (number.length() > 0) {
+                number = number.replace(',', '.');
+                try {
+                    BigDecimal num = new BigDecimal(number);
+                    performOperation(num, op);
+                } catch (NumberFormatException ex) {
+                    numberField.setText("");
+                }
+            }
+            lastOperation = op;
+            operationField.setText(lastOperation);
         }
     }
 
-    private void performOperation(Double number, String operation){
+    private void performOperation(BigDecimal number, String operation){
         if (operation.equals("sin")){
-            operand = Math.sin(number);
+            operand = BigDecimal.valueOf(Math.sin(number.doubleValue()));
         }
         else if (operation.equals("cos")){
-            operand = Math.cos(number);
+            operand = BigDecimal.valueOf(Math.cos(number.doubleValue()));
         }
-        if(lastOperation.equals("=")){
-            lastOperation = operation;
-        }
-        switch(lastOperation) {
-            case "=":
+        else {
+            if (operand == null) {
                 operand = number;
-                break;
-            case "/":
-                if (number == 0) {
-                    operand = 0.0;
-                } else {
-                    operand /= number;
-                }
-                break;
-            case "*":
-                operand *= number;
-                break;
-            case "+":
-                operand += number;
-                break;
-            case "-":
-                operand -= number;
-                break;
+            }
+            else if (lastOperation.equals("=")) {
+                lastOperation = operation;
+            }
+            switch (lastOperation) {
+                case "=":
+                    operand = number;
+                    break;
+                case "/":
+                    if (number == BigDecimal.ZERO) {
+                        operand = BigDecimal.valueOf(0.0);
+                    } else {
+                        operand = operand.divide(number, 10, RoundingMode.HALF_UP);
+                    }
+                    break;
+                case "*":
+                    operand = operand.multiply(number);
+                    break;
+                case "+":
+                    operand = operand.add(number);
+                    break;
+                case "-":
+                    operand = operand.subtract(number);
+                    break;
+            }
         }
         commaExists = false;
         resultField.setText(operand.toString().replace('.', ','));
